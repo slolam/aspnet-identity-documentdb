@@ -173,10 +173,8 @@ namespace Simple.AspNet.Identity.DocumentDb.Tests
                 Email = "user@domain.com"
             };
             moqClient.Setup(u => u.CreateDocumentAsync(It.IsAny<Uri>(), It.IsAny<object>(), It.IsAny<RequestOptions>(), It.IsAny<bool>()))
-                .ReturnsAsync(new ResourceResponse<Document>
-                {
-                    
-                });
+                .ReturnsAsync(new ResourceResponse<Document>(new Document { Id = identity.Id }));
+
             await userStore.CreateAsync(identity);
             Assert.IsNotNull(identity.Id);
         }

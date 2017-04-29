@@ -42,7 +42,7 @@ namespace Simple.AspNet.Identity.DocumentDb
         public string Collection { get; set; }
 
         /// <summary>
-        /// Singleton client
+        /// Singleton client maintained multiple UserStore objects/threads
         /// </summary>
         internal IDocumentClient Client { get; set; }
 
@@ -110,7 +110,7 @@ namespace Simple.AspNet.Identity.DocumentDb
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserStore{TUser}"/> class.
+        /// Initializes a new instance of the <see cref="UserStore{TUser}"/> class. This constructor is for mocking the DocumentClient
         /// </summary>
         /// <param name="client">Instance of the <seealso cref="IDocumentClient"/> implementation to access the Azure DocumentDb</param>
         /// <param name="database">Name of the Azure DocumentDb database</param>
@@ -215,7 +215,6 @@ namespace Simple.AspNet.Identity.DocumentDb
         {
             var query = _client.CreateDocumentQuery<TUser>(_documentCollection, _feedOption)
                 .Where(predicate)
-                //.OrderBy(user => user.UserName)
                 .Take(1)
                 .AsDocumentQuery();
 
@@ -367,7 +366,6 @@ namespace Simple.AspNet.Identity.DocumentDb
             try
             {
                 var resp = await _client.ReadDocumentAsync(UriFactory.CreateDocumentUri(_database, _collection, userId), new RequestOptions { PartitionKey = new PartitionKey(userId), SessionToken = _feedOption.SessionToken });
-                if (resp.SessionToken == null) _feedOption.SessionToken = resp.SessionToken;
                 _user = (dynamic)resp.Resource;
                 return _user.Clone();
             }

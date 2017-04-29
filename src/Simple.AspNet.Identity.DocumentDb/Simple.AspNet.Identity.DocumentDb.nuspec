@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Simple DocumentDb Provider for ASP.NET Identity</title>
+    <summary>ASP.NET Identity provider using DocumentDb data store</summary>
+    <licenseUrl>https://github.com/slolam/aspnet-identity-documentdb/blob/master/license</licenseUrl>
+    <projectUrl>https://github.com/slolam/aspnet-identity-documentdb/</projectUrl>
+    <authors>Shailesh Lolam</authors>
+    <owners>Shailesh Lolam</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Uses Azure DocumentDb provider to seamlessly integrate plug into ASP.NET Identity Framework.</description>
+    <language>en-US</language>
+    <tags>Identity ASP.NET Membership Azure DocumentDb</tags>
+    <dependencies />
+  </metadata>
+</package>
