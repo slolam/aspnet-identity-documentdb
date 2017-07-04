@@ -56,7 +56,7 @@ namespace Identity.Core
                     Collection = "users",
                     Mode = Microsoft.Azure.Documents.Client.ConnectionMode.Direct
                 })
-                .AddClaimsPrincipalFactory<ClaimsPrincipalFactory>()
+                .AddClaimsPrincipalFactory<DefaultClaimsPrincipalFactory<ApplicationUser>>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();

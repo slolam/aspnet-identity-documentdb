@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Simple DocumentDb Provider for ASP.NET Core Identity</title>
+    <summary>ASP.NET Core Identity provider using DocumentDb data store</summary>
+    <licenseUrl>https://github.com/slolam/aspnet-identity-documentdb/blob/master/license</licenseUrl>
+    <projectUrl>https://github.com/slolam/aspnet-identity-documentdb/</projectUrl>
+    <authors>Shailesh Lolam</authors>
+    <owners>Shailesh Lolam</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Uses Azure DocumentDb Core provider to seamlessly integrate plug into ASP.NET Core Identity Framework.</description>
+    <language>en-US</language>
+    <tags>Identity ASP.NET Core Membership Azure DocumentDb</tags>
+    <dependencies />
+    <!--<contentFiles>
+      <files include="any/netstandard1.6/Providers/ClaimsPrincipalFactory.cs.pp" buildAction="Content" />
+    </contentFiles>-->
+  </metadata>
+  <!--<files>
+    <file src="Content\Providers\ClaimsPrincipalFactory.cs.pp" target="Content\Providers\ClaimsPrincipalFactory.cs.pp" />
+  </files>-->
+</package>

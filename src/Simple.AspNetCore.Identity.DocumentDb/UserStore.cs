@@ -49,7 +49,14 @@ namespace Simple.AspNetCore.Identity.DocumentDb
         /// <summary>
         /// Gets or sets the connection mode of the <see cref="DocumentClient"/>
         /// </summary>
-        public ConnectionMode Mode { get; set; } = ConnectionMode.Gateway;
+        /// <remarks>The default value <see cref="ConnectionMode.Direct"/></remarks>
+        public ConnectionMode Mode { get; set; } = ConnectionMode.Direct;
+
+        /// <summary>
+        /// Gets or sets the connection protocol of the <see cref="DocumentClient"/>
+        /// </summary>
+        /// <remarks>The default value <see cref="Protocol.Tcp"/></remarks>
+        public Protocol Protocol { get; set; } = Protocol.Tcp;
     }
 
     /// <summary>
@@ -101,11 +108,10 @@ namespace Simple.AspNetCore.Identity.DocumentDb
         /// Initializes a new instance of the <see cref="UserStore{TUser}"/> class.
         /// </summary>
         /// <param name="options"><see cref="DocumentDbOptions"/> option to collect to the uesr store in Azure DocumentDb</param>
+        /// <remarks>It is highly recommended to create database and collection in advance with the required Request Units (RUs) and use /id as partition key</remarks>
         public UserStore(DocumentDbOptions options)
             : this(options.Client ?? (options.Client = new DocumentClient(options?.AccountEndpoint, options?.AccountKey, 
-                        options.Mode == ConnectionMode.Direct ? 
-                        new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp } :
-                        new ConnectionPolicy { ConnectionMode = ConnectionMode.Gateway, ConnectionProtocol = Protocol.Https })), 
+                        new ConnectionPolicy { ConnectionMode = options.Mode, ConnectionProtocol = options.Protocol })), 
                   options?.Database, options?.Collection)
         { }
 
@@ -115,7 +121,7 @@ namespace Simple.AspNetCore.Identity.DocumentDb
         /// <param name="client">Instance of the <seealso cref="IDocumentClient"/> implementation to access the Azure DocumentDb</param>
         /// <param name="database">Name of the Azure DocumentDb database</param>
         /// <param name="collection">Name of the Azure DocumentDb collection</param>
-        /// <remarks>It is highly recommended to create database and collection in advance with the required Request Units (RUs)</remarks>
+        /// <remarks>It is highly recommended to create database and collection in advance with the required Request Units (RUs) and use /id as partition key</remarks>
         public UserStore(IDocumentClient client, string database, string collection)
         {
             client.NotNull(nameof(client));

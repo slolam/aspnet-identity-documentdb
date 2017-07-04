@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{028B3391-09BC-4B27-BC2A-C24835BA4856}"
 EndProject
@@ -17,9 +17,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.AspNet.Identity.Docu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.AspNetCore.Identity.DocumentDb", "Simple.AspNetCore.Identity.DocumentDb\Simple.AspNetCore.Identity.DocumentDb.csproj", "{3B4019FE-A38B-4EF0-983C-7B2C76624B00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity-Core", "Identity-Core\Identity-Core.csproj", "{CE02BB26-A782-4180-8303-474B2E0A1D2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity-Core", "Identity-Core\Identity-Core.csproj", "{CE02BB26-A782-4180-8303-474B2E0A1D2E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.AspNetCore.Identity.DocumentDb.Tests", "Simple.AspNetCore.Identity.DocumentDb.Tests\Simple.AspNetCore.Identity.DocumentDb.Tests.csproj", "{10521CA7-E7A6-49A6-B43E-781EAF8A0926}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5272C16C-D909-4FA4-867A-F1A949ED60B9}"
+	ProjectSection(SolutionItems) = preProject
+		Signing\Password.txt = Signing\Password.txt
+		Signing\sign.pfx = Signing\sign.pfx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
