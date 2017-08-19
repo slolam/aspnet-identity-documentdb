@@ -4,7 +4,7 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>Simple DocumentDb Provider for ASP.NET Core Identity</title>
-    <summary>ASP.NET Core Identity provider using DocumentDb data store</summary>
+    <summary>ASP.NET Core Identity provider using DocumentDb (Cosmos DB) data store</summary>
     <licenseUrl>https://github.com/slolam/aspnet-identity-documentdb/blob/master/license</licenseUrl>
     <projectUrl>https://github.com/slolam/aspnet-identity-documentdb/</projectUrl>
     <authors>Shailesh Lolam</authors>
@@ -12,13 +12,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Uses Azure DocumentDb Core provider to seamlessly integrate plug into ASP.NET Core Identity Framework.</description>
     <language>en-US</language>
-    <tags>Identity ASP.NET Core Membership Azure DocumentDb</tags>
+    <tags>Identity ASP.NET Core Membership Azure DocumentDb (Cosmos DB)</tags>
     <dependencies />
-    <!--<contentFiles>
-      <files include="any/netstandard1.6/Providers/ClaimsPrincipalFactory.cs.pp" buildAction="Content" />
-    </contentFiles>-->
+    <contentFiles>
+      <files include="cs/**" buildAction="Compile" />
+    </contentFiles>
   </metadata>
-  <!--<files>
-    <file src="Content\Providers\ClaimsPrincipalFactory.cs.pp" target="Content\Providers\ClaimsPrincipalFactory.cs.pp" />
-  </files>-->
+  <files>
+    <file src="Providers/ClaimsPrincipalFactory.cs.pp" target="contentFiles/cs/netstandard2.0/Providers/ClaimsPrincipalFactory.cs.pp" />
+  </files>
 </package>

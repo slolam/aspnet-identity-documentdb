@@ -18,8 +18,9 @@ namespace Microsoft.AspNetCore.Identity
         /// <returns>Returns the <see cref="IdentityBuilder"/> instance</returns>
         public static IdentityBuilder AddDocumentDbOptions(this IdentityBuilder builder, DocumentDbOptions options)
         {
-            builder.Services.AddSingleton<DocumentDbOptions>(options);
+            builder.Services.AddSingleton(options);
             builder.Services.AddScoped(typeof(IUserStore<>).MakeGenericType(builder.UserType), typeof(UserStore<>).MakeGenericType(builder.UserType));
+            builder.Services.AddScoped(typeof(IUserClaimsPrincipalFactory<>).MakeGenericType(builder.UserType), typeof(DefaultClaimsPrincipalFactory<>).MakeGenericType(builder.UserType));
             return builder;
         }
 
@@ -31,8 +32,9 @@ namespace Microsoft.AspNetCore.Identity
         /// <returns>Returns the <see cref="IdentityBuilder"/> instance</returns>
         public static IdentityBuilder AddDocumentDbOptions(this IdentityBuilder builder, Func<IServiceProvider, DocumentDbOptions> optionsAccessor)
         {
-            builder.Services.AddScoped<DocumentDbOptions>(optionsAccessor);
+            builder.Services.AddScoped(optionsAccessor);
             builder.Services.AddScoped(typeof(IUserStore<>).MakeGenericType(builder.UserType), typeof(UserStore<>).MakeGenericType(builder.UserType));
+            builder.Services.AddScoped(typeof(IUserClaimsPrincipalFactory<>).MakeGenericType(builder.UserType), typeof(DefaultClaimsPrincipalFactory<>).MakeGenericType(builder.UserType));
             return builder;
         }
     }

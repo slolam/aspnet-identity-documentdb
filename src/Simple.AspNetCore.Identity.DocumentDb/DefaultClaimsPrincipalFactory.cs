@@ -27,14 +27,10 @@ namespace Simple.AspNetCore.Identity.DocumentDb
             UserManager<TUser> userManager,
             IOptions<IdentityOptions> optionsAccessor)
         {
-            if (userManager == null)
-            {
-                throw new ArgumentNullException(nameof(userManager));
-            }
-            if (optionsAccessor == null || optionsAccessor.Value == null)
-            {
-                throw new ArgumentNullException(nameof(optionsAccessor));
-            }
+            userManager.NotNull(nameof(userManager));
+            optionsAccessor.NotNull(nameof(optionsAccessor));
+            optionsAccessor.Value.NotNull(nameof(optionsAccessor.Value));
+
             UserManager = userManager;
             Options = optionsAccessor.Value;
         }
@@ -70,7 +66,7 @@ namespace Simple.AspNetCore.Identity.DocumentDb
             }
             var userId = await UserManager.GetUserIdAsync(user);
             var userName = await UserManager.GetUserNameAsync(user);
-            var id = new ClaimsIdentity(Options.Cookies.ApplicationCookieAuthenticationScheme,
+            var id = new ClaimsIdentity("Identity.Application",
                 Options.ClaimsIdentity.UserNameClaimType,
                 Options.ClaimsIdentity.RoleClaimType);
             id.AddClaim(new Claim(Options.ClaimsIdentity.UserIdClaimType, userId));

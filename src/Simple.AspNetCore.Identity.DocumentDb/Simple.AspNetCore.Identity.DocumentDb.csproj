@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\signing\sign.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
@@ -12,14 +12,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Providers\ClaimsPrincipalFactory.cs.pp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Providers\ClaimsPrincipalFactory.cs.pp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="1.3.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="1.5.0" />
   </ItemGroup>
 
 </Project>
