@@ -10,9 +10,9 @@
     <authors>Shailesh Lolam</authors>
     <owners>Shailesh Lolam</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Uses Azure DocumentDb Core provider to seamlessly integrate plug into ASP.NET Core Identity Framework.</description>
+    <description>Uses Azure DocumentDb Core provider to seamlessly integrate into ASP.NET Core Identity Framework.</description>
     <language>en-US</language>
-    <tags>Identity ASP.NET Core Membership Azure DocumentDb (Cosmos DB)</tags>
+    <tags>Identity ASP.NET Core Membership Azure DocumentDb CosmosDB</tags>
     <dependencies />
     <contentFiles>
       <files include="cs/**" buildAction="Compile" />

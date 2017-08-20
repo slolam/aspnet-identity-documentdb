@@ -10,7 +10,7 @@
     <authors>Shailesh Lolam</authors>
     <owners>Shailesh Lolam</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Uses Azure DocumentDb provider to seamlessly integrate plug into ASP.NET Identity Framework.</description>
+    <description>Uses Azure DocumentDb provider to seamlessly integrates into ASP.NET Identity Framework.</description>
     <language>en-US</language>
     <tags>Identity ASP.NET Membership Azure DocumentDb</tags>
     <dependencies />
