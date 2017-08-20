@@ -70,7 +70,7 @@ namespace Identity.Core.Providers
             }
             var userId = await UserManager.GetUserIdAsync(user);
             var userName = await UserManager.GetUserNameAsync(user);
-            var id = new ClaimsIdentity(Options.Cookies.ApplicationCookieAuthenticationScheme,
+            var id = new ClaimsIdentity("Identity.Application",
                 Options.ClaimsIdentity.UserNameClaimType,
                 Options.ClaimsIdentity.RoleClaimType);
             id.AddClaim(new Claim(Options.ClaimsIdentity.UserIdClaimType, userId));

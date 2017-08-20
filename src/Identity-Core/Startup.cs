@@ -16,6 +16,8 @@ using Simple.AspNetCore.Identity.DocumentDb;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Identity.Core.Providers;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Identity.Core
 {
@@ -56,8 +58,15 @@ namespace Identity.Core
                     Collection = "users",
                     Mode = Microsoft.Azure.Documents.Client.ConnectionMode.Direct
                 })
-                .AddClaimsPrincipalFactory<DefaultClaimsPrincipalFactory<ApplicationUser>>()
                 .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
+
+            services.AddAuthentication()
+                    .AddFacebook(options => {
+                        options.AppId = Configuration["auth:facebook:appid"];
+                        options.AppSecret = Configuration["auth:facebook:appsecret"];
+                    });
 
             services.AddMvc();
 
@@ -85,13 +94,7 @@ namespace Identity.Core
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
-
-            app.UseFacebookAuthentication(new FacebookOptions
-            {
-                AppId = "<APP ID>",
-                AppSecret = "<APP SECRET>"
-            });
+            app.UseAuthentication();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
